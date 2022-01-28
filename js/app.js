@@ -54,6 +54,37 @@ l("listOfSections", listOfSections);
 
 // <li><a href="" class="a_top_hypers"> Inbox</a></li>
 
+let lastKnownScrollPosition = 0;
+let ticking = false;
+
+function doSomething(scrollPos) {
+  console.log("hi");
+  listOfSections.forEach((sec, index) => {
+    if (isElementInViewport(sec)) {
+      sec.classList.add("active");
+      listOfNavElements[index].classList.add("active");
+
+      console.log("sec", sec);
+    } else {
+      listOfNavElements[index].classList.remove("active");
+      sec.classList.remove("active");
+    }
+  });
+}
+
+document.addEventListener("scroll", function (e) {
+  lastKnownScrollPosition = window.scrollY;
+
+  if (!ticking) {
+    window.requestAnimationFrame(function () {
+      doSomething(lastKnownScrollPosition);
+      ticking = false;
+    });
+
+    ticking = true;
+  }
+});
+
 const clickOnNavItem = (event) => {
   l("event", event);
   event.preventDefault();
@@ -63,30 +94,6 @@ const clickOnNavItem = (event) => {
   let s = new String(number.toString());
   const n = parseInt(s.slice(3)) + 1;
   l("index", n);
-
-  document.addEventListener("scroll", (event) => {
-    console.log("hi");
-    listOfSections.forEach((sec, index) => {
-      if (isElementInViewport(sec)) {
-        // setTimeout(() => {
-        //   sec.classList.add("active");
-        //   listOfNavElements[index].classList.add("active");
-        // }, 0);
-        sec.classList.add("active");
-        listOfNavElements[index].classList.add("active");
-
-        console.log("sec", sec);
-      } else {
-        // setTimeout(() => {
-        //   listOfNavElements[index].classList.remove("active");
-        //   sec.classList.remove("active");
-        // }, 0);
-        listOfNavElements[index].classList.remove("active");
-        sec.classList.remove("active");
-      }
-    });
-  });
-
   document
     .querySelector(`#section${n}`)
     .scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
