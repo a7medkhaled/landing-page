@@ -57,6 +57,10 @@ main {
   padding-top: 3em;
 }
 
+.active {
+  background-color: #cc1;
+}
+
 section {
   position: relative;
   min-height: 80vh;
