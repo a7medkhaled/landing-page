@@ -10,7 +10,7 @@
 
 ## Project_Description
 
-this project aims to learn and apply javascript, html and css concepts, the project is considered as content managment page where content may be added dynamiclly and then the menu will be filled out as per contents added, this is a very good project for any one who wants to learn how to build dynamic web pages or a web site.
+this project aims to learn and apply javascript, HTML, and CSS concepts, the project is considered a content management page where content may be added dynamically and then the menu will be filled out as per contents added, this is a very good project for any one who wants to learn how to build dynamic web pages or a web site.
 
 ## Instructions
 
@@ -22,7 +22,7 @@ For specific, detailed instructions, look at the project instructions in the Uda
 
 ## Usage
 
-add any section in the html then save you will find the menu manipulated dynamically
+add any section in the HTML then save you will find the menu manipulated dynamically
 
 ## APIS
 
