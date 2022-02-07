@@ -4,6 +4,7 @@
 
 - [Project_Description](#Project_Description)
 - [Instructions](#instructions)
+- [Usage](#Usage)
 - [APIS](#APIS)
 - [Dependencies](#Dependencies)
 
@@ -18,6 +19,10 @@ The starter project has some HTML and CSS styling to display a static version of
 To get started, open `js/app.js` and start building out the app's functionality
 
 For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+
+## Usage
+
+add any section in the html then save you will find the menu manipulated dynamically
 
 ## APIS
 
