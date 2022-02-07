@@ -7,6 +7,7 @@
 - [Usage](#Usage)
 - [APIS](#APIS)
 - [Dependencies](#Dependencies)
+- [Developer](#Developer)
 
 ## Project_Description
 
@@ -35,3 +36,7 @@ getBoundingClientRect
 ## Dependencies
 
 this project doesn't need any dependencies
+
+## Developer
+
+this project developed by Ahmed Khaled
