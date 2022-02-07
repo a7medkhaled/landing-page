@@ -49,7 +49,7 @@ const l = (k = null, m) => console.log(k, m);
 function isElementInViewport(el) {
   let rect = el.getBoundingClientRect();
 
-  return rect.top >= 0 && rect.bottom <= window.outerHeight;
+  return rect.top >= 0 && rect.bottom <= window.outerHeight + 300;
 }
 
 /* 
@@ -82,9 +82,10 @@ const clickOnNavItem = (event) => {
   let s = new String(number.toString());
   const n = parseInt(s.slice(3)) + 1;
   l("index", n);
+
   document
     .querySelector(`#section${n}`)
-    .scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+    .scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
 };
 
 // the main function which will build the dynamic menu
