@@ -23,11 +23,20 @@
  *
  */
 
+const navBar = document.querySelector("#navbar__list");
+const listOfSections = document.querySelectorAll("section");
+const listOfNavElements = [];
+let lastKnownScrollPosition = 0;
+let ticking = false;
+
 /**
  * End Global Variables
  * Start Helper Functions
  *
  */
+
+// this is a helper function to make it easy to print out to the console
+const l = (k = null, m) => console.log(k, m);
 
 /**
  * End Helper Functions
@@ -35,29 +44,19 @@
  *
  */
 
+// this function aims to determine whether an element in the viewport or not
+
 function isElementInViewport(el) {
-  var rect = el.getBoundingClientRect();
+  let rect = el.getBoundingClientRect();
 
   return rect.top >= 0 && rect.bottom <= window.outerHeight;
 }
-const l = (k = null, m) => console.log(k, m);
 
-// build the nav
-
-const navBar = document.querySelector("#navbar__list");
-l(navBar);
-
-const listOfSections = document.querySelectorAll("section");
-const listOfNavElements = [];
-
-l("listOfSections", listOfSections);
-
-// <li><a href="" class="a_top_hypers"> Inbox</a></li>
-
-let lastKnownScrollPosition = 0;
-let ticking = false;
-
-function doSomething(scrollPos) {
+/* 
+ this function handle the scroll event firing it checks 
+ for each element if in the view port it will add the active class to that section
+*/
+function scrollEventHandler() {
   console.log("hi");
   listOfSections.forEach((sec, index) => {
     if (isElementInViewport(sec)) {
@@ -71,20 +70,9 @@ function doSomething(scrollPos) {
     }
   });
 }
-
-document.addEventListener("scroll", function (e) {
-  lastKnownScrollPosition = window.scrollY;
-
-  if (!ticking) {
-    window.requestAnimationFrame(function () {
-      doSomething(lastKnownScrollPosition);
-      ticking = false;
-    });
-
-    ticking = true;
-  }
-});
-
+/* 
+ this function handle the click event firing, it will add the active class to that section and scroll to that section 
+*/
 const clickOnNavItem = (event) => {
   l("event", event);
   event.preventDefault();
@@ -99,28 +87,31 @@ const clickOnNavItem = (event) => {
     .scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
 };
 
-listOfSections.forEach((sec, index) => {
-  const title = sec.children[0]?.children[0].textContent;
-  const ele = `<li id='sec${index}'><a href="" > ${title}</a></li>`;
+// the main function which will build the dynamic menu
+const buildMenuDynamic = () => {
+  listOfSections.forEach((sec, index) => {
+    const title = sec.children[0]?.children[0].textContent;
+    const ele = `<li id='sec${index}'><a href="" > ${title}</a></li>`;
 
-  navBar.insertAdjacentHTML("afterbegin", ele);
-  listOfNavElements.push(document.querySelector(`#sec${index}`));
+    navBar.insertAdjacentHTML("afterbegin", ele);
+    listOfNavElements.push(document.querySelector(`#sec${index}`));
+    // Scroll to section on link click
+    listOfNavElements[index].addEventListener("click", clickOnNavItem);
+  });
+};
+// add event listener to watch the scroll ecents
+document.addEventListener("scroll", function (e) {
+  lastKnownScrollPosition = window.scrollY;
 
-  listOfNavElements[index].addEventListener("click", clickOnNavItem);
+  if (!ticking) {
+    window.requestAnimationFrame(function () {
+      scrollEventHandler();
+      ticking = false;
+    });
+
+    ticking = true;
+  }
 });
 
-// Add class 'active' to section when near top of viewport
-
-// Scroll to anchor ID using scrollTO event
-
-/**
- * End Main Functions
- * Begin Events
- *
- */
-
 // Build menu
-
-// Scroll to section on link click
-
-// Set sections as active
+buildMenuDynamic();

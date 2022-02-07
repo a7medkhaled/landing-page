@@ -2,7 +2,14 @@
 
 ## Table of Contents
 
+- [Project_Description](#Project_Description)
 - [Instructions](#instructions)
+- [APIS](#APIS)
+- [Dependencies](#Dependencies)
+
+## Project_Description
+
+this project aims to learn and apply javascript, html and css concepts, the project is considered as content managment page where content may be added dynamiclly and then the menu will be filled out as per contents added, this is a very good project for any one who wants to learn how to build dynamic web pages or a web site.
 
 ## Instructions
 
@@ -12,10 +19,14 @@ To get started, open `js/app.js` and start building out the app's functionality
 
 For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
 
-# the used apis
+## APIS
 
 querySelectorAll
 addEventListener
 scrollIntoView
 insertAdjacentHTML
 getBoundingClientRect
+
+## Dependencies
+
+# this project doesn't need any dependencies
