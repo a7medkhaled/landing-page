@@ -29,4 +29,4 @@ getBoundingClientRect
 
 ## Dependencies
 
-### this project doesn't need any dependencies
+this project doesn't need any dependencies
